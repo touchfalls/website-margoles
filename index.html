@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check Rates</title>
+
+  <!-- Шрифт Inter с Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Подключаем CSS по порядку: база → раскладка → компоненты -->
+  <link rel="stylesheet" href="src/css/base.css">
+  <link rel="stylesheet" href="src/css/layout.css">
+  <link rel="stylesheet" href="src/css/home.css">
+  <link rel="stylesheet" href="src/css/check.css">
+
+  <!-- Плавный скролл между секциями -->
+  <style>
+    html { scroll-snap-type: y mandatory; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Верхняя шапка ── -->
+  <header class="topbar">
+    <span class="topbar-label" id="topLabel">home</span>
+    <a class="topbar-link" href="/support/index.html">support</a>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       СЕКЦИЯ 1 — Главная (домой)
+       Аватарки разработчиков + ссылки
+  ══════════════════════════════════════ -->
+  <section id="home" class="section">
+    <div class="card card--home">
+
+      <!-- Два разработчика с аватарками -->
+      <div class="avatars">
+
+        <div class="person">
+          <div class="avatar">
+            <!-- Замени src на путь к своей картинке: src/media/moonuwolf.jpg -->
+            <img
+              src="src/media/avatar-1.jpg"
+              alt="moonuwolf"
+              width="84" height="84"
+              loading="lazy"
+            >
+          </div>
+          <span class="person-name">moonuwolf</span>
+        </div>
+
+        <div class="person">
+          <div class="avatar">
+            <!-- Замени src на путь к своей картинке: src/media/touchfalls.jpg -->
+            <img
+              src="src/media/avatar-2.jpg"
+              alt="touchfalls"
+              width="84" height="84"
+              loading="lazy"
+            >
+          </div>
+          <span class="person-name">touchfalls</span>
+        </div>
+
+      </div>
+
+      <!-- Навигационные ссылки -->
+      <nav class="home-nav">
+        <!-- Скроллит вниз до секции check-rates на этой же странице -->
+        <a class="nav-link" href="#check-rates">check rates</a>
+        <!-- Переходит на отдельную страницу support -->
+        <a class="nav-link" href="src/support/index.html">support</a>
+      </nav>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       СЕКЦИЯ 2 — Check Rates
+       Форма для проверки рейтингов из watchlist
+  ══════════════════════════════════════ -->
+  <section id="check-rates" class="section">
+    <div class="card">
+
+      <div class="check-title">Input your link on watchlist</div>
+
+      <!-- Поле ввода ссылки на профиль Letterboxd -->
+      <div class="input-wrap">
+        <input
+          class="url-input"
+          id="profileUrl"
+          type="url"
+          placeholder="https://letterboxd.com/username/"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+
+      <!-- Кнопка запуска -->
+      <button class="check-btn" id="checkBtn">check rates</button>
+
+      <!-- Статус (скрыт, появляется во время работы) -->
+      <div class="status" id="statusBox"></div>
+
+      <!-- Прогресс-бар (скрыт, появляется во время загрузки) -->
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Список результатов (скрыт, появляется после загрузки) -->
+      <div class="results-wrap" id="resultsWrap"></div>
+
+      <!-- Кнопки скачивания -->
+      <div class="toolbar">
+        <button class="tool-btn" id="downloadCsvBtn"  disabled>download csv</button>
+        <button class="tool-btn" id="downloadJsonBtn" disabled>download json</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Подключаем JavaScript -->
+  <script src="src/js/check.js"></script>
+
+</body>
+</html>
